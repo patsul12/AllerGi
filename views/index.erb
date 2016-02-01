@@ -1,33 +1,44 @@
-
+<!--
 <% @result.businesses.each do |b| %>
-  <h1><%= b.name %></h1>
-  <div class="">
-    <p> Food Categories: </p>
-    <% b.categories.each do |c| %>
-      <%= c[ 0 ] %>
-    <%end%>
-  </div>
-  <div class="">
-    <p> Phone: <%= b.display_phone %> </p>
-  </div>
-  <div class="">
-    <p>Address: <%= b.location.address %></p>
-    <p>Zip Code: <%= b.location.postal_code %></p>
-    <p>State: <%= b.location.state_code %></p>
-    <p>Country: <%= b.location.country_code %></p>
-    <p>Cross Streets: <%= b.location.cross_streets %></p>
-  </div>
-  <div class="">
-    <p>Rating: b.rating</p>
-    <img src="<%=b.rating_img_url_small%>" alt="" />
-  </div>
-  <div class="">
-    <img src="<%= b.snippet_image_url %>" alt="" />
-    <div class="">
-      <p><%= b.snippet_text %></p>
+<div class="container">
+  <div class="col-xs-8 col-xs-offset-2">
+   <h1><%= b.name %></h1>
+    <div class="well">
+      <div class="row">
+        <div class="">
+          <img src="<%=b.image_url%>" alt="" class = "img-thumbnail"/>
+        </div>
+        <div class="">
+          <p> Food Categories:
+            <% b.categories.each do |c| %>
+              <%= c[ 0 ] %>
+            <%end%>
+          </p>
+        </div>
+        <div class="">
+          <p> Phone: <%= b.display_phone %> </p>
+        </div>
+        <div class="">
+          <p>Address: <%= b.location.address[0] %></p>
+          <p>Zip Code: <%= b.location.postal_code %></p>
+          <p>State: <%= b.location.state_code %></p>
+          <p>Country: <%= b.location.country_code %></p>
+          <p>Cross Streets: <%= b.location.cross_streets %></p>
+        </div>
+        <div class="">
+          <p>Rating: <%= b.rating %></p>
+          <img src="<%=b.rating_img_url_small%>" alt="" />
+        </div>
+        <div class="wrapper">
+          <img src="<%= b.snippet_image_url %>" class = "img-thumbnail" />
+          <p><%= b.snippet_text %></p>
+        </div>
+        <div class="">
+          <p><a href="http://www.yelp.com/menu/<%=b.id%>">Menu</a></p>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="">
-    <p><a href="http://www.yelp.com/menu/<%=b.id%>">Menu</a></p>
-  </div>
+</div>
 <%end%>
+-->
