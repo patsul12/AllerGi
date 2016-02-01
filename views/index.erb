@@ -1,41 +1,61 @@
-<h1 class="text-center">AllerGi</h1>
-
-<form class="text-center form-inline" action="index.html" method="post">
-  <div class="form-group">
-    <input class="form-control" type="text" name="name" value="ALLERGIES">
-    <button class="btn btn-default" type="submit" name="button"><i class="fa fa-search"></i></button>
-  </div>
-</form>
-
-<% @result.businesses.each do |b| %>
-  <h1><%= b.name %></h1>
-  <div class="">
-    <p> Food Categories: </p>
-    <% b.categories.each do |c| %>
-      <%= c[ 0 ] %>
-    <%end%>
-  </div>
-  <div class="">
-    <p> Phone: <%= b.display_phone %> </p>
-  </div>
-  <div class="">
-    <p>Address: <%= b.location.address %></p>
-    <p>Zip Code: <%= b.location.postal_code %></p>
-    <p>State: <%= b.location.state_code %></p>
-    <p>Country: <%= b.location.country_code %></p>
-    <p>Cross Streets: <%= b.location.cross_streets %></p>
-  </div>
-  <div class="">
-    <p>Rating: b.rating</p>
-    <img src="<%=b.rating_img_url_small%>" alt="" />
-  </div>
-  <div class="">
-    <img src="<%= b.snippet_image_url %>" alt="" />
-    <div class="">
-      <p><%= b.snippet_text %></p>
+<div class="row">
+  <div class="search-wrapper col-center col-xs-6">
+    <div class="logo">
+      <h1 class="title">AllerGi</h1>
+    </div>
+    <div class="oct">
+      <div class="search">
+        <form class="form-inline input">
+          <div class="form-group">
+            <div class="input-group input-text">
+              <input class="form-control search-field" type="text" name="name" value="">
+              <span class="input-group-btn input-button">
+                 <button class="btn btn-default search-button" type="submit" name=""><i class="fa fa-medkit fa-1x"></i></button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="allergens1 icon-hover">
+        <button class="btn btn-default">
+          <i class="fa fa-twitter"></i>
+        </button>
+      </div>
+      <div class="allergens2 icon-hover">
+        <button class="btn btn-default">
+          <i class="fa fa-twitter"></i>
+        </button>
+      </div>
+      <div class="allergens3 icon-hover">
+        <button class="btn btn-default">
+          <i class="fa fa-twitter"></i>
+        </button>
+      </div>
+      <div class="allergens4 icon-hover">
+        <button class="btn btn-default">
+          <i class="fa fa-twitter"></i>
+        </button>
+      </div>
+      <div class="allergens5 icon-hover">
+        <button class="btn btn-default">
+          <i class="fa fa-twitter"></i>
+        </button>
+      </div>
+      <div class="allergens6 icon-hover">
+        <button class="btn btn-default">
+          <i class="fa fa-twitter"></i>
+        </button>
+      </div>
+      <div class="allergens7 icon-hover">
+        <button class="btn btn-default">
+          <i class="fa fa-twitter"></i>
+        </button>
+      </div>
+      <div class="allergens8 icon-hover">
+        <button class="btn btn-default">
+          <i class="fa fa-twitter"></i>
+        </button>
+      </div>
     </div>
   </div>
-  <div class="">
-    <p><a href="http://www.yelp.com/menu/<%=b.id%>">Menu</a></p>
-  </div>
-<%end%>
+</div>
