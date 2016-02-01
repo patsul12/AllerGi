@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1 class="text-center">AllerGi</h1>
 
 <form class="text-center form-inline" action="index.html" method="post">
@@ -6,3 +7,38 @@
     <button class="btn btn-default" type="submit" name="button"><i class="fa fa-search"></i></button>
   </div>
 </form>
+=======
+
+<% @result.businesses.each do |b| %>
+  <h1><%= b.name %></h1>
+  <div class="">
+    <p> Food Categories: </p>
+    <% b.categories.each do |c| %>
+      <%= c[ 0 ] %>
+    <%end%>
+  </div>
+  <div class="">
+    <p> Phone: <%= b.display_phone %> </p>
+  </div>
+  <div class="">
+    <p>Address: <%= b.location.address %></p>
+    <p>Zip Code: <%= b.location.postal_code %></p>
+    <p>State: <%= b.location.state_code %></p>
+    <p>Country: <%= b.location.country_code %></p>
+    <p>Cross Streets: <%= b.location.cross_streets %></p>
+  </div>
+  <div class="">
+    <p>Rating: b.rating</p>
+    <img src="<%=b.rating_img_url_small%>" alt="" />
+  </div>
+  <div class="">
+    <img src="<%= b.snippet_image_url %>" alt="" />
+    <div class="">
+      <p><%= b.snippet_text %></p>
+    </div>
+  </div>
+  <div class="">
+    <p><a href="http://www.yelp.com/menu/<%=b.id%>">Menu</a></p>
+  </div>
+<%end%>
+>>>>>>> e17fd87c586b3e1660fc284fe55bcd106783ed20
