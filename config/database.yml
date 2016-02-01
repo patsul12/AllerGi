@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: allergwiz
+
+test:
+  adapter: postgresql
+  database: allergwiz_test
