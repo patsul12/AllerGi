@@ -1,1 +1,28 @@
+<h1 class=jumbotron>The Keywords</h1>
+<br>
 
+<a href="/keywords/new">Add New Keyword</a>
+<br>
+<% @keywords.each() do |keyword| %>
+    <br><li><a href="/keywords/<%= keyword.id() %>"><%= keyword.keyword_name %></a><br>
+      <a class="modify" href="/keywords/<%= keyword.id() %>/allergen">-Add Allergen</a><br>
+      <a class="modify" href="/keywords/<%= keyword.id() %>/edit">-Edit</a><br>
+      <a class="modify" href="/keywords/<%= keyword.id() %>/delete">-Delete</a><br>
+    </li>
+    <br>
+
+Allergens identified by this keyword:<br>
+  <div class="allergens">
+    <% if keyword.allergens.any? %>
+    <% keyword.allergens.each do | allergen | %>
+    <%= allergen.allergen_name %><br>
+    <% end %>
+    <% else %>
+    <p>
+      This keyword has no associated allergens!
+    </p>
+    <% end %>
+    </div>
+    <% end %>
+  <br>
+  <a href="/">Home</a>
