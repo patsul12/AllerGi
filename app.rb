@@ -7,7 +7,6 @@ require './lib/keyword'
 require './lib/yelpresult'
 require 'pry'
 require 'net/http'
-require './lib/yelpresult'
 require './lib/dish'
 require './lib/restaurant'
 require './lib/menuresult'
@@ -15,12 +14,12 @@ require './lib/locuresult'
 also_reload('./**/*.rb')
 
 get '/' do
-  Yelp.configure
-  @result = Yelp.client.search('San Diego', {term: 'restaurant', category: 'food'})
+  # Yelp.configure
+  # @result = Yelp.client.search('San Diego', {term: 'restaurant', category: 'food'})
 
-  @result.businesses.each do |br|
-    binding.pry
-  end
+  # @result.businesses.each do |br|
+  #   binding.pry
+  # end
   erb :index
 end
 
