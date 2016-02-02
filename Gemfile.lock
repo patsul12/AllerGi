@@ -110,6 +110,3 @@ DEPENDENCIES
   sinatra-activerecord
   sinatra-contrib
   yelp
-
-BUNDLED WITH
-   1.11.2
