@@ -1,0 +1,17 @@
+<h1>Add a dish to <%=@restaurant.restaurant_name() %></h1>
+
+<form action="/restaurants/<%= @restaurant.id() %>/dishes/new" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <label for="restaurant_name"></label>
+  <input id="restaurant_name" name="restaurant_name" type="hidden" value="<%= @restaurant.restaurant_name %>">
+
+  <label for="dish_id">Select A Dish</label>
+  <select id ="dish_id" name="dish_id">
+    <% disD.all.each do |dish| %>
+      <option id="<%= dish.dish_name %>" value="<%= dish.id %>"><%= dish.dish_name %></option>
+    <% end %>
+  </select><br>
+
+  <button type="submit">Add Dish</button>
+</form>

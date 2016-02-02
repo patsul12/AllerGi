@@ -1,0 +1,12 @@
+Restaurant:
+<br>
+<li><%= @restaurant.restaurant_name() %></li>
+<br>
+Contains the following allergens:<br>
+<% @allergens.each do |allergen| %>
+<%= allergen.allergen_name %><br>
+<% end %>
+<br>
+<a href="/restaurants/<%= @restaurant.id() %>/edit">-Edit</a><br>
+<a href="/restaurants/<%= @restaurant.id() %>/allergen">-Add allergen</a><br>
+<a href="/restaurants">Back to Restaurants</a>
