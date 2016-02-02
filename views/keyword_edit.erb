@@ -1,1 +1,11 @@
+<h1>Edit the keyword:</h1>
 
+<form action="/keywords/<%= @keyword.id() %>" method="post">
+
+  <input name="_method" type="hidden" value="patch">
+
+  <label for="keyword_name">Rename your keyword:</label>
+  <input id="keyword_name" name="keyword_name" type="text" value="<%= @keyword.keyword_name %>"><br>
+
+  <button type="submit">Rename</button>
+</form>
