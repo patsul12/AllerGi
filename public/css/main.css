@@ -1,0 +1,149 @@
+body {
+  background-color: #f2784b;
+  color:#fde3a7;
+}
+
+input {
+  font-family: 'Fjord One', serif;
+}
+
+.logo {
+  text-align: center;
+  font-family: 'Fjord One', serif;
+}
+
+.title {
+  font-size: 5em;
+  text-shadow: 2px 2px #D35400;
+}
+
+.input {
+  text-align: center;
+}
+
+
+.search-button:hover, .input-button:hover {
+  background-color: rgb(248,148,6) !important;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  background-color: #D35400;
+}
+
+.search-field {
+  background-color: #fde3a7;
+}
+
+.input-button {
+  background-color: #D35400;
+}
+
+.input-text {
+  box-shadow: 2px 2px 2px 1px #D35400;
+}
+
+.search-field {
+  border: none;
+  box-shadow: 2px 2px 2px 1px #D35400;
+}
+
+.col-center {
+  float: none;
+  margin: 0 auto;
+}
+
+.search-wrapper {
+  top: 35vh;
+}
+
+.fa-medkit {
+  color: #fde3a7;
+  border: none;
+}
+
+.icon-hover:hover {
+  transform: scale(1.1);
+}
+
+.allergens1{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #D35400;
+  margin: -70px;
+  top: 0;
+  right: 50%;
+}
+
+.allergens2{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #D35400;
+  margin: -70px;
+  top: 0;
+  left: 50%;
+}
+
+.allergens3{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #D35400;
+  margin-left: 45px;
+  top: 135%;
+  left: 48.5%;
+}
+
+.allergens4{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #D35400;
+  margin-right: 40px;
+  top: 135%;
+  right: 48.5%;
+}
+
+.allergens5{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #D35400;
+  margin-right: -130px;
+  top: 15%;
+  right: 100%;
+}
+
+.allergens6{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #D35400;
+  margin-right: -130px;
+  top: 85%;
+  right: 100%;
+}
+
+.allergens7{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #D35400;
+  margin-right: 100px;
+  top: 15%;
+  right: 0;
+}
+
+
+.allergens8{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #D35400;
+  margin-right: 100px;
+  top: 85%;
+  right: 0;
+}
