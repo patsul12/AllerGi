@@ -23,6 +23,19 @@ Allergens present in this dish:<br>
     </p>
     <% end %>
     </div>
+  <br>
+Restaurants that serve this dish:<br>
+  <div class="restaurants">
+    <% if dish.restaurants.any? %>
+    <% dish.restaurants.each do | restaurant | %>
+    <%= restaurant.restaurant_name %><br>
+    <% end %>
+    <% else %>
+    <p>
+      This dish is not served in any restaurant!
+    </p>
+    <% end %>
+    </div>
     <% end %>
   <br>
-  <a href="/">Home</a>
+<a href="/">Home</a>

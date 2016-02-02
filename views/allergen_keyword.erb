@@ -1,10 +1,10 @@
-<h1>Add a keyword to <%=@restaurant.restaurant_name() %></h1>
+<h1>Add a keyword to <%=@allergen.allergen_name() %></h1>
 
-<form action="/restaurants/<%= @restaurant.id() %>/keywords/new" method="post">
+<form action="/allergens/<%= @allergen.id() %>/keywords/new" method="post">
   <input name="_method" type="hidden" value="patch">
 
-  <label for="restaurant_name"></label>
-  <input id="restaurant_name" name="restaurant_name" type="hidden" value="<%= @restaurant.restaurant_name %>">
+  <label for="allergen_name"></label>
+  <input id="allergen_name" name="allergen_name" type="hidden" value="<%= @allergen.allergen_name %>">
 
   <label for="keyword_id">Select A keyword</label>
   <select id ="keyword_id" name="keyword_id">
@@ -13,5 +13,5 @@
     <% end %>
   </select><br>
 
-  <button type="submit">Add Keyword</button>
+  <button type="submit">Add Keyword to Allergen</button>
 </form>
