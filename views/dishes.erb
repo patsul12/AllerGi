@@ -1,1 +1,28 @@
+<h1 class=jumbotron>The Dishes</h1>
+<br>
 
+<a href="/dishes/new">Add New Dishes</a>
+<br>
+<% @dishes.each() do |restaurant| %>
+    <br><li><a href="/restaurants/<%= dish.id() %>"><%= dish.dish_name %></a><br>
+      <a class="modify" href="/dishes/<%= dish.id() %>/allergen">-Add Allergen</a><br>
+      <a class="modify" href="/dishes/<%= dish.id() %>/edit">-Edit</a><br>
+      <a class="modify" href="/dishes/<%= dish.id() %>/delete">-Delete</a><br>
+    </li>
+    <br>
+
+Allergens present in this dish:<br>
+  <div class="allergens">
+    <% if dish.allergens.any? %>
+    <% dish.allergens.each do | allergen | %>
+    <%= allergen.allergen_name %><br>
+    <% end %>
+    <% else %>
+    <p>
+      This dish has no allergens!
+    </p>
+    <% end %>
+    </div>
+    <% end %>
+  <br>
+  <a href="/">Home</a>
