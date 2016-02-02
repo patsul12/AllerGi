@@ -5,7 +5,8 @@
 <br>
 <% @allergens.each() do |allergen| %>
     <br><li><a href="/allergens/<%= allergen.id() %>"><%= allergen.allergen_name %></a><br>
-      <a class="modify" href="/allergens/<%= allergen.id() %>/brand">-Add Restaurant</a><br>
+      <a class="modify" href="/allergens/<%= allergen.id() %>/restaurant">-Add Restaurant</a><br>
+      <a class="modify" href="/allergens/<%= allergen.id() %>/keyword">-Add Keyword</a><br>
       <a class="modify" href="/allergens/<%= allergen.id() %>/edit">-Edit</a><br>
       <a class="modify" href="/allergens/<%= allergen.id() %>/delete">-Delete</a><br>
     </li>
