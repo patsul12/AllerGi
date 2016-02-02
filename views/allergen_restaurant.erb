@@ -1,0 +1,17 @@
+<h1>Add an allergen to <%=@restaurant.restaurant_name() %></h1>
+
+<form action="/restaurants/<%= @restaurant.id() %>/brands/new" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <label for="restaurant_name"></label>
+  <input id="restaurant_name" name="restaurant_name" type="hidden" value="<%= @restaurant.restaurant_name %>">
+
+  <label for="allergen_id">Select an Allergen</label>
+  <select id ="allergen_id" name="allergen_id">
+    <% Allergen.all.each do |allergen| %>
+      <option id="<%= allergen.allergen_name %>" value="<%= allergen.id %>"><%= allergen.allergen_name %></option>
+    <% end %>
+  </select><br>
+
+  <button type="submit">Add Allergen</button>
+</form>
