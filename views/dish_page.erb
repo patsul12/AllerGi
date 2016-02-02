@@ -1,1 +1,22 @@
-
+Dish:
+<br>
+<li><%= @dish.dish_name() %></li>
+<br>
+Found in the following restaurants:<br>
+<% @restaurants.each do |restaurant| %>
+<%= restaurant.restaurant_name %><br>
+<% end %>
+<br>
+Contains the following allergens:<br>
+<% @allergens.each do |allergen| %>
+<%= allergen.allergen_name %><br>
+<% end %>
+Contains the following keywords:<br>
+<% @keywords.each do |keyword| %>
+<%= keyword.keyword_name %><br>
+<% end %>
+<a href="/dishes/<%= @dish.id() %>/edit">-Edit</a><br>
+<a href="/dishes/<%= @dish.id() %>/restaurant">-Add Restaurant</a><br>
+<a href="/dishes/<%= @dish.id() %>/allergen">-Add Allergen</a><br>
+<a href="/dishes/<%= @dish.id() %>/keyword">-Add Keyword</a><br>
+<a href="/stores">Back to Dishes</a>
