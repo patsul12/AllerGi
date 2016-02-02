@@ -7,7 +7,6 @@ require './lib/keyword'
 require './lib/yelpresult'
 require 'pry'
 require 'net/http'
-require './lib/yelpresult'
 require './lib/dish'
 require './lib/restaurant'
 require './lib/menuresult'
@@ -15,30 +14,199 @@ require './lib/locuresult'
 also_reload('./**/*.rb')
 
 get '/' do
-  Yelp.configure
-  @result = Yelp.client.search('San Diego', {term: 'restaurant', category: 'food'})
-
-  @result.businesses.each do |br|
-    binding.pry
-  end
   erb :index
 end
 
-#@result.businesses.each do |r|
-  #Restaurant.create( {name: r.name, phone: r.display_phone, location: r.location.display_address[ 0 ], views: 0})
-#end
-
-=begin
-
-url = "http://www.yelp.com/menu/" + br.id.to_s
-html_url = URI.parse( url )
-if !html_url.path.empty?
-  req = Net::HTTP.new(html_url.host, html_url.port)
-  res = req.request_head(html_url.path)
-
-  if res.code == 200
-    result_html = MenuResult.get_html( url )
-  end
+get('/allergens') do
+  @allergens = Allergen.all()
+  erb(:allergens)
 end
 
-=end
+get('/allergens/new') do
+  erb(:allergen_new)
+end
+
+get('/allergens/:id') do
+  id = params[:id].to_i
+  @allergen = Allergen.find(id)
+  @restaurants = @allergen.restaurants()
+  erb(:allergen_page)
+end
+
+get('/allergens/:id/edit') do
+  @allergen = Allergen.find(params.fetch("id").to_i)
+  erb(:allergen_edit)
+end
+
+get('/allergens/:id/delete') do
+  @allergen = Allergen.find(params.fetch("id").to_i)
+  @allergen.delete
+  redirect ('/allergens')
+end
+
+patch('/allergens/:id') do
+  @allergens = Allergen.all()
+  allergen_name = params.fetch("allergen_name")
+  @allergen = Allergen.find(params.fetch("id").to_i)
+  @allergen.update({:allergen_name => allergen_name})
+  erb(:allergens)
+end
+
+patch("/allergens/:id/restaurants/new") do
+  @allergen = Allergen.find(params.fetch("id").to_i)
+  @restaurant = Restaurant.find(params.fetch("restaurant_id").to_i)
+  @allergen.restaurants.push(@restaurant)
+  redirect ('/allergens')
+end
+
+patch("/allergens/:id/dishes/new") do
+  @allergen = Allergen.find(params.fetch("id").to_i)
+  @dish = Dish.find(params.fetch("dish_id").to_i)
+  @allergen.dishes.push(@dish)
+  redirect ('/allergens')
+end
+
+post('/allergens') do
+  Allergen.create(params).save
+  redirect ('/allergens')
+end
+
+get('/restaurants') do
+  @restaurants = Restaurant.all()
+  erb(:restaurants)
+end
+
+get('/restaurants/new') do
+  erb(:restaurant_new)
+end
+
+get('/restaurants/:id') do
+  id = params[:id].to_i
+  @restaurant = Restaurant.find(id)
+  @allergens = @restaurant.allergens()
+  erb(:restaurant_page)
+end
+
+get('/restaurants/:id/edit') do
+  @restaurant = Restaurant.find(params.fetch("id").to_i)
+  erb(:restaurant_edit)
+end
+
+get('/restaurants/:id/delete') do
+  @restaurant = Restaurant.find(params.fetch("id").to_i)
+  @restaurant.delete
+  redirect ('/restaurants')
+end
+
+patch('/restaurants/:id') do
+  @restaurants = Restaurant.all()
+  brand_name = params.fetch("restaurant_name")
+  @restaurant = Restaurant.find(params.fetch("id").to_i)
+  @restaurant.update({:restaurant_name => restaurant_name})
+  erb(:restaurants)
+end
+
+patch("/restaurants/:id/allergens/new") do
+  @restaurant = Store.find(params.fetch("id").to_i)
+  @brand = Allergen.find(params.fetch("allergen_id").to_i)
+  @restaurant.allergens.push(@allergen)
+  redirect ('/restaurants')
+end
+
+post('/restaurants') do
+  Restaurant.create(params).save
+  redirect ('/restaurants')
+end
+
+get('/keywords') do
+  @keywords = Keyword.all()
+  erb(:keywords)
+end
+
+get('/keywords/new') do
+  erb(:keyword_new)
+end
+
+get('/keywords/:id') do
+  id = params[:id].to_i
+  @keyword = Keyword.find(id)
+  @allergens = @keyword.allergens()
+  erb(:keyword_page)
+end
+
+get('/keywords/:id/edit') do
+  @keyword = Keyword.find(params.fetch("id").to_i)
+  erb(:keyword_edit)
+end
+
+get('/keywords/:id/delete') do
+  @keyword = Keyword.find(params.fetch("id").to_i)
+  @keyword.delete
+  redirect ('/keywords')
+end
+
+patch('keywords/:id') do
+  @keywords = Keyword.all()
+  keyword_name = params.fetch("keyword_name")
+  @keyword = Keyword.find(params.fetch("id").to_i)
+  @keyword.update({:keyword_name => keyword_name})
+  erb(:keywords)
+end
+
+patch("/keywords/:id/allergens/new") do
+  @keyword = Keyword.find(params.fetch("id").to_i)
+  @allergen = Allergen.find(params.fetch("allergen_id").to_i)
+  @keyword.allergens.push(@allergen)
+  redirect ('/keywords')
+end
+
+post('/keywords') do
+  Keyword.create(params).save
+  redirect ('/keywords')
+end
+
+get('/dishes') do
+  @dishes = Dish.all()
+end
+
+get('/dishes/new') do
+  erb(:dish_new)
+end
+
+get('/dishes/:id') do
+  id = params[:id].to_i
+  @dish = Dish.find(id)
+  @allergens = @dish.allergens()
+  erb(:keyword_page)
+end
+
+get('/dishes/:id/edit') do
+  @dish = Dish.find(params.fetch("id").to_i)
+  erb(:dish_edit)
+end
+
+get('/brands/:id/delete') do
+  @dish = Dish.find(params.fetch("id").to_i)
+  @dish.delete
+  redirect ('/dishes')
+end
+
+patch('/dishes/:id') do
+  @dishes = Dish.all()
+  dish_name = params.fetch("dish_name")
+  @dish = Dish.find(params.fetch("id").to_i)
+  @dish.update({:dish_name => dish_name})
+  erb(:dishes)
+end
+
+patch("/dishes/:id/restaurants/new") do
+  @dish = Dish.find(params.fetch("id").to_i)
+  @restaurant = Restaurant.find(params.fetch("restaurant_id").to_i)
+  @dish.restaurants.push(@restaurant)
+  redirect ('/dishes')
+end
+
+post('/dishes') do
+  Dish.create(params).save
+  redirect ('/dishes')
+end
