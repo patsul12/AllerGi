@@ -1,0 +1,12 @@
+Allergen:
+<br>
+<li><%= @allergen.allergen_name() %></li>
+<br>
+Present in the following restaurants:<br>
+<% @restaurants.each do |restaurant| %>
+<%= restaurant.restaurant_name %><br>
+<% end %>
+<br>
+<a href="/allergens/<%= @allergen.id() %>/edit">-Edit</a><br>
+<a href="/allergens/<%= @allergen.id() %>/restaurant">-Add restaurant</a><br>
+<a href="/allergens">Back to Allergens</a>
