@@ -6,7 +6,12 @@ Present in the following restaurants:<br>
 <% @restaurants.each do |restaurant| %>
 <%= restaurant.restaurant_name %><br>
 <% end %>
+Identified by the following keywords:<br>
+<% @keywords.each do |keyword| %>
+<%= keyword.keyword_name %><br>
+<% end %>
 <br>
 <a href="/allergens/<%= @allergen.id() %>/edit">-Edit</a><br>
 <a href="/allergens/<%= @allergen.id() %>/restaurant">-Add restaurant</a><br>
+<a href="/allergens/<%= @allergen.id() %>/keyword">-Add keyword</a><br>
 <a href="/allergens">Back to Allergens</a>
