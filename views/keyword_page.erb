@@ -1,1 +1,12 @@
-
+Keyword:
+<br>
+<li><%= @keyword.keyword_name() %></li>
+<br>
+is an allergen of the type:<br>
+<% @allergens.each do |allergen| %>
+<%= allergen.allergen_name %><br>
+<% end %>
+<br>
+<a href="/keywords/<%= @keyword.id() %>/edit">-Edit</a><br>
+<a href="/keywords/<%= @keyword.id() %>/allergen">-Add Allergens</a><br>
+<a href="/keywords">Back to Keyword</a>
