@@ -49,6 +49,20 @@ patch('/allergens/:id') do
   erb(:allergens)
 end
 
+patch("/allergens/:id/restaurants/new") do
+  @allergen = Allergen.find(params.fetch("id").to_i)
+  @restaurant = Restaurant.find(params.fetch("restaurant_id").to_i)
+  @allergen.restaurants.push(@restaurant)
+  redirect ('/allergens')
+end
+
+patch("/allergens/:id/dishes/new") do
+  @allergen = Allergen.find(params.fetch("id").to_i)
+  @dish = Dish.find(params.fetch("dish_id").to_i)
+  @allergen.dishes.push(@dish)
+  redirect ('/allergens')
+end
+
 post('/allergens') do
   Allergen.create(params).save
   redirect ('/allergens')
@@ -87,6 +101,13 @@ patch('/restaurants/:id') do
   @restaurant = Restaurant.find(params.fetch("id").to_i)
   @restaurant.update({:restaurant_name => restaurant_name})
   erb(:restaurants)
+end
+
+patch("/restaurants/:id/allergens/new") do
+  @restaurant = Store.find(params.fetch("id").to_i)
+  @brand = Allergen.find(params.fetch("allergen_id").to_i)
+  @restaurant.allergens.push(@allergen)
+  redirect ('/restaurants')
 end
 
 post('/restaurants') do
@@ -129,6 +150,13 @@ patch('keywords/:id') do
   erb(:keywords)
 end
 
+patch("/keywords/:id/allergens/new") do
+  @keyword = Keyword.find(params.fetch("id").to_i)
+  @allergen = Allergen.find(params.fetch("allergen_id").to_i)
+  @keyword.allergens.push(@allergen)
+  redirect ('/keywords')
+end
+
 post('/keywords') do
   Keyword.create(params).save
   redirect ('/keywords')
@@ -166,6 +194,13 @@ patch('/dishes/:id') do
   @dish = Dish.find(params.fetch("id").to_i)
   @dish.update({:dish_name => dish_name})
   erb(:dishes)
+end
+
+patch("/dishes/:id/restaurants/new") do
+  @dish = Dish.find(params.fetch("id").to_i)
+  @restaurant = Restaurant.find(params.fetch("restaurant_id").to_i)
+  @dish.restaurants.push(@restaurant)
+  redirect ('/dishes')
 end
 
 post('/dishes') do
